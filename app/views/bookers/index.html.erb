@@ -1,0 +1,44 @@
+<body>
+
+    <p id="notice">Book was successfully destroyed.</p>
+
+    <h1>Books</h1>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Body</th>
+                <th colspan="3"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+             <% @bookers.each do |booker| %>
+             <tr>
+                 <td><%= booker.title %></td>
+                 <td><%= booker.body %></td>
+                 <td><%= link_to 'Show', booker_path(booker.id)%></td>
+                 <td><%= link_to 'Edit', edit_booker_path(booker.id)%></td>
+                 <td><%= link_to 'Destroy', booker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+
+            <% end %>
+        </tbody>
+
+    </table>
+
+    <h2>New book</h2>
+
+    <%= form_with model:@booker, local:true do |f| %>
+
+    <h5>Title</br>
+    <%= f.text_field :title %></h5>
+    <h5>Body</br>
+    <%= f.text_area :body %></h5>
+    <h5><%= f.submit 'Create Book' %></h5>
+
+</body>
+
+<% end %>
