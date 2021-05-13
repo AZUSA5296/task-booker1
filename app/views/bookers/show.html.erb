@@ -1,4 +1,6 @@
-<h2>タイトル</h2>
-<p><%= @booker.title %></p>
-<h2>本文</h2>
-<p><%= @booker.body %></p>
+<body>
+    <p><strong>Title: </strong><%= @booker.title %></br>
+    <strong>Body: </strong><%= @booker.body %></p>
+</body>
+
+<p id="button"><%= link_to "Edit", edit_booker_path %>｜<%= link_to "Back", bookers_path %></p>
