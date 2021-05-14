@@ -4,50 +4,50 @@ class BookersController < ApplicationController
   end
 
   def index
-    @booker = Booker.new
-    @bookers = Booker.all
+    @book = Book.new
+    @books = Book.all
   end
 
   def show
-    @booker = Booker.find(params[:id])
+    @book = Book.find(params[:id])
   end
 
   def new
-    @booker = Booker.new
+    @book = Book.new
   end
 
   def create
-    @booker = Booker.new(booker_params)
-    if @booker.save
-      redirect_to ("/bookers/#{@booker.id}") , flash: {success: "Book was successfully created."}
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to "/bookers/#{@book.id}" , flash: {success: "Book was successfully created."}
     else
-      @bookers = Booker.all
+      @books = Book.all
       render :index
     end
   end
 
   def edit
-    @booker = Booker.find(params[:id])
+    @book = Book.find(params[:id])
   end
 
   def update
-    @booker = Booker.find(params[:id])
-    if @booker.update(booker_params)
-      redirect_to ("/bookers/#{@booker.id}"), flash: {success: "Book was successfully update."}
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      redirect_to booker_path, flash: {success: "Book was successfully update."}
     else
       render :edit
     end
   end
 
   def destroy
-    booker = Booker.find(params[:id])
-    booker.destroy
-    redirect_to bookers_path(booker), flash: {success: "Book was successfully destroyed."}
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to bookers_path, flash: {success: "Book was successfully destroyed."}
   end
 
   private
-  def booker_params
-    params.require(:booker).permit(:title, :body)
+  def book_params
+    params.require(:book).permit(:title, :body)
   end
 
 end
