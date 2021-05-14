@@ -19,9 +19,9 @@
              <tr>
                  <td><%= book.title %></td>
                  <td><%= book.body %></td>
-                 <td><%= link_to 'Show', booker_path(book.id)%></td>
-                 <td><%= link_to 'Edit', edit_booker_path(book.id)%></td>
-                 <td><%= link_to 'Destroy', booker_path(book), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                 <td><%= link_to 'Show', book_path(book.id)%></td>
+                 <td><%= link_to 'Edit', edit_book_path(book.id)%></td>
+                 <td><%= link_to 'Destroy', book_path(book), method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
 
 
@@ -44,7 +44,7 @@
     <% end %>
 
 
-    <%= form_with model:@book, url:'/bookers', local:true do |f| %>
+    <%= form_with model:@book, url:'/books', local:true do |f| %>
 
     <h4>Title</br>
     <%= f.text_field :title %></h4>
